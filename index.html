@@ -1,1 +1,135 @@
-hellooooooooooooooooooooooooooooo
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* 移动端卡片布局 */
+        @media (max-width: 768px) {
+            .product-card {
+                border: 1px solid #dee2e6;
+                border-radius: 10px;
+                margin: 10px;
+                padding: 15px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+            
+            .product-image {
+                height: 200px;
+                object-fit: cover;
+                border-radius: 8px;
+                margin-bottom: 10px;
+            }
+            
+            .product-price {
+                color: #dc3545;
+                font-size: 1.2rem;
+                font-weight: bold;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body class="container mt-4">
+    <div class="table-responsive d-none d-md-block">
+        <!-- 桌面端表格视图 -->
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Picture</th>
+                    <th>Price</th>
+                    <th>Remark</th>
+                    <th>Video</th>
+                </tr>
+            </thead>
+            <tbody id="productList"></tbody>
+        </table>
+    </div>
+
+    <div class="d-md-none">
+        <!-- 移动端卡片视图 -->
+        <div id="mobileProducts"></div>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const products = [
+            {
+                id: "A20724-SZ0193",
+                name: "top",
+                image: "https://photos.google.com/u/1/album/AF1QipNB31tzvYdLLrZ9XJaxClQI035chIHXTf8ay2dQ/photo/AF1QipNMAfgcdx5wiW9nHC9Zju_oWzHGj8Zl4WjsZ7_x",
+                price: "10 rmb per pieces",
+                description: "",
+                video: ""
+            },
+            {
+                id: "A690",
+                name: "top",
+                image: "https://photos.google.com/u/1/album/AF1QipNB31tzvYdLLrZ9XJaxClQI035chIHXTf8ay2dQ/photo/AF1QipNMAfgcdx5wiW9nHC9Zju_oWzHGj8Zl4WjsZ7_x",
+                price: "18 rmb per pieces",
+                description: "",
+                video: ""
+            },
+            {
+                id: "A689",
+                name: "top",
+                image: "https://photos.google.com/u/1/album/AF1QipNB31tzvYdLLrZ9XJaxClQI035chIHXTf8ay2dQ/photo/AF1QipNMAfgcdx5wiW9nHC9Zju_oWzHGj8Zl4WjsZ7_x",
+                price: "18 rmb per pieces",
+                description: "",
+                video: ""
+            }
+        ];
+
+        // 统一渲染函数
+        function renderProducts() {
+            const productList = document.getElementById('productList');
+            const mobileProducts = document.getElementById('mobileProducts');
+            
+            // 清空现有内容
+            productList.innerHTML = '';
+            mobileProducts.innerHTML = '';
+
+            products.forEach(product => {
+                // 桌面端表格行
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${product.id}</td>
+                    <td>${product.name}</td>
+                    <td><img src="${product.image}" class="img-fluid"></td>
+                    <td>${product.price}</td>
+                    <td>${product.description}</td>
+                    <td><div class="video-container">${product.video}</div></td>
+                `;
+                productList.appendChild(tr);
+
+                // 移动端卡片
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <img src="${product.image}" class="product-image">
+                    <h4>${product.name}</h4>
+                    <div class="product-price">${product.price}</div>
+                    <p>${product.description}</p>
+                    <div class="video-container">${product.video}</div>
+                    <!--button class="btn btn-danger mt-2" onclick="deleteProduct(${product.id})">删除</button-->
+                `;
+                mobileProducts.appendChild(card);
+            });
+        }
+
+        // 删除产品函数
+        function deleteProduct(id) {
+            products = products.filter(product => product.id !== id);
+            renderProducts();
+        }
+
+        // 初始渲染
+        renderProducts();
+    </script>
+</body>
+</html>
