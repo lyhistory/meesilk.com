@@ -6,20 +6,31 @@
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-         /* PC端图片高度控制 */
-         @media (min-width: 769px) {
-            .responsive-img {
-                max-height: 500px;
-                width: auto;
-                object-fit: contain;
-            }
-            
+        /* 联系方式模块样式 */
+        .contact-badge {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        
+        /* 新增：统一图片样式 */
+        .product-img {
+            max-height: 150px;
+            object-fit: contain;
+            border: 1px solid #eee;
+            border-radius: 5px;
+        }
+
+        /* PC端图片高度控制 */
+        @media (min-width: 769px) {
             .table-image {
-                max-height: 500px;
-                width: 100px;
-                object-fit: cover;
+                max-height: 300px; /* 调小高度避免表格过高 */
             }
         }
+        
         /* 移动端卡片布局 */
         @media (max-width: 768px) {
             .product-card {
@@ -37,16 +48,20 @@
                 margin-bottom: 10px;
             }
             
-            .product-price {
-                color: #dc3545;
-                font-size: 1.2rem;
-                font-weight: bold;
-                margin: 10px 0;
+            .color-image-mobile { /* 移动端颜色图样式 */
+                max-height: 120px;
+                margin: 10px auto;
             }
         }
     </style>
 </head>
 <body class="container mt-4">
+    <!-- 顶部联系方式 -->
+    <div class="contact-badge text-center d-none d-md-block">
+        <i class="fab fa-wechat wechat-icon"></i>
+        <span class="ms-2">Contact US use <a target="_blank" href="https://www.wechat.com/">Wechat APP</a>, our wechat ID: gzmaimeng1688</span>
+    </div>
+
     <div class="table-responsive d-none d-md-block">
         <!-- 桌面端表格视图 -->
         <table class="table table-bordered table-striped">
@@ -55,6 +70,7 @@
                     <th>#</th>
                     <th>Name</th>
                     <th>Picture</th>
+                    <th>Colors</th>
                     <th>Price</th>
                     <th>Remark</th>
                     <th>Video</th>
@@ -62,6 +78,12 @@
             </thead>
             <tbody id="productList"></tbody>
         </table>
+    </div>
+
+    <!-- 移动端联系方式 -->
+    <div class="contact-badge text-center d-md-none">
+        <i class="fab fa-wechat wechat-icon"></i>
+        <span class="ms-2">Contact US use <a target="_blank" href="https://www.wechat.com/">Wechat APP</a>, our wechat ID:gzmaimeng1688</span>
     </div>
 
     <div class="d-md-none">
@@ -76,7 +98,8 @@
             {
                 id: "A20724-SZ0193",
                 name: "top",
-                image: "https://i.postimg.cc/xT9y4rMh/A20724.jpg",
+                image: "https://i.postimg.cc/N07RPSKb/A20724.jpg",
+                colorsImage: "https://i.postimg.cc/W35gsZ6k/A20724-colors.png",
                 price: "10 rmb per pieces",
                 description: "",
                 video: ""
@@ -84,7 +107,8 @@
             {
                 id: "A690",
                 name: "top",
-                image: "https://i.postimg.cc/sxFjzZrD/A690.jpg",
+                image: "https://i.postimg.cc/LsqVCNzb/A690.jpg",
+                colorsImage: "",
                 price: "18 rmb per pieces",
                 description: "",
                 video: ""
@@ -93,6 +117,7 @@
                 id: "A689",
                 name: "top",
                 image: "https://i.postimg.cc/CM4XSqYP/A689.jpg",
+                colorsImage: "",
                 price: "18 rmb per pieces",
                 description: "",
                 video: ""
@@ -101,6 +126,7 @@
                 id: "A2360",
                 name: "top",
                 image: "https://i.postimg.cc/Gt7HCmqM/A2360.jpg",
+                colorsImage: "",
                 price: "10 rmb per pieces",
                 description: "",
                 video: ""
@@ -109,6 +135,7 @@
                 id: "A2328",
                 name: "top",
                 image: "https://i.postimg.cc/sx7snfbQ/A2328.jpg",
+                colorsImage: "",
                 price: "10 rmb per pieces",
                 description: "",
                 video: ""
@@ -117,6 +144,7 @@
                 id: "A2338",
                 name: "top",
                 image: "https://i.postimg.cc/k52r1XbJ/A2338.jpg",
+                colorsImage: "",
                 price: "11 rmb per pieces",
                 description: "",
                 video: ""
@@ -125,6 +153,7 @@
                 id: "A2366",
                 name: "top",
                 image: "https://i.postimg.cc/L62cdV10/A2366.jpg",
+                colorsImage: "",
                 price: "20 rmb per pieces",
                 description: "",
                 video: ""
@@ -133,6 +162,7 @@
                 id: "A688",
                 name: "top",
                 image: "https://i.postimg.cc/9QTZGyxC/A688.jpg",
+                colorsImage: "",
                 price: "18 rmb per pieces",
                 description: "",
                 video: ""
@@ -141,6 +171,7 @@
                 id: "A691",
                 name: "top",
                 image: "https://i.postimg.cc/prFDVS6b/A691.png",
+                colorsImage: "",
                 price: "12 rmb per pieces",
                 description: "",
                 video: ""
@@ -149,6 +180,7 @@
                 id: "A2369",
                 name: "top",
                 image: "https://i.postimg.cc/9X6dgWDW/A2369.jpg",
+                colorsImage: "",
                 price: "10 rmb per pieces",
                 description: "",
                 video: ""
@@ -157,6 +189,7 @@
                 id: "A2324",
                 name: "top",
                 image: "https://i.postimg.cc/qvMzjYxJ/A2324.png",
+                colorsImage: "",
                 price: "11 rmb per pieces",
                 description: "",
                 video: ""
@@ -165,6 +198,7 @@
                 id: "B0296",
                 name: "shorts",
                 image: "https://i.postimg.cc/52FZd93n/B0296.jpg",
+                colorsImage: "",
                 price: "12 rmb per pieces",
                 description: "",
                 video: ""
@@ -204,16 +238,80 @@
             {
                 id: "B01LABAKU",
                 name: "Leggings Women's Wide Leg Flared Trousers Yoga Trousers Butt Push Up Jogging Bottoms High Waist Training Trousers",
-                image: "",
+                image: "https://i.postimg.cc/DZ82G3hD/B01-LABAKU.jpg",
                 price: "26 rmb per pieces",
                 description: "",
                 video: ""
             },
             {
-                id: "xxx",
+                id: "C2255",
+                name: "Workout Sets for Women 2 Piece High Waist Lifting Shorts & Sports Bra Sets Yoga Gym Activewear Set",
+                image: "https://i.postimg.cc/8z6Mhxp7/C2255.png",
+                price: "20 rmb per pieces",
+                description: "",
+                video: ""
+            },
+            {
+                id: "C2363",
+                name: "Bodysuit Shapewear for Women Seamless Body Shaper Tummy Control Butt Lifter Sculpting Full Body Suit",
+                image: "https://i.postimg.cc/q77t1Y0c/C2363.jpg",
+                price: "25 rmb per pieces",
+                description: "",
+                video: ""
+            },
+            {
+                id: "C0326",
+                name: "Women's Jumpsuit Romper Shorts Workout Sleeveless Bodysuit One Piece Scroop Neck Ribbed Jumpsuits",
+                image: "https://i.postimg.cc/N0JwxCfH/C0326.png",
+                price: "26 rmb per pieces",
+                description: "",
+                video: ""
+            },
+            {
+                id: "C2325",
+                name: "U-shaped back design Women Tummy Control Sexy Ribbed Sleeveless Shapewear Ultra Light Butt Lift Bodysuit ",
+                image: "https://i.postimg.cc/G2tcD8Gd/C2325.jpg",
+                price: "25 rmb per pieces",
+                description: "",
+                video: ""
+            },
+            {
+                id: "C2362",
+                name: "open-back design with a racerback cut Womens Bodysuit Stretch Activewear Sportwear Sleeveless Yoga Romper Jumpsuit",
+                image: "https://i.postimg.cc/CMBB8VK8/C2362.jpg",
+                price: "25 rmb per pieces",
+                description: "This one-piece bodysuit is a sleeveless athletic romper designed with a sleek, minimalist silhouette ideal for fitness, athleisure, or casual wear. It features a scoop neckline in the front and short-length legs that provide comfort and mobility while maintaining a flattering fit.The fabric is ribbed and stretchy, contouring naturally to the body for a snug yet breathable feel. The standout feature is the dramatic open-back design with a racerback cut—this creates an elegant and sporty aesthetic, allowing for both style and ventilation. The back cutout curves around the shoulder blades and dips slightly at the mid-back, accentuating the natural contours of the back and waist. Perfect for gym sessions, yoga, dance, or as a bold streetwear piece, this romper blends functionality with modern style.",
+                video: ""
+            },
+            {
+                id: "C2337",
                 name: "top",
                 image: "",
-                price: "18 rmb per pieces",
+                price: "29 rmb per pieces",
+                description: "",
+                video: ""
+            },
+            {
+                id: "C1024",
+                name: "top",
+                image: "",
+                price: "28 rmb per pieces",
+                description: "",
+                video: ""
+            },
+            {
+                id: "C1203",
+                name: "top",
+                image: "",
+                price: "32 rmb per pieces",
+                description: "",
+                video: ""
+            },
+            {
+                id: "C3306",
+                name: "top",
+                image: "",
+                price: "45 rmb per pieces",
                 description: "",
                 video: ""
             }
@@ -229,28 +327,30 @@
             mobileProducts.innerHTML = '';
 
             products.forEach(product => {
-                // 桌面端表格行
+                // 桌面端表格行 - 增加Colors列（单张图）
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td>${product.id}</td>
                     <td>${product.name}</td>
-                    <td><img src="${product.image}" class="img-fluid"></td>
+                    <td><img src="${product.image}" class="product-img"></td>
+                    <td><img src="${product.colorsImage}" class="product-img"></td> <!-- 单图展示 -->
                     <td>${product.price}</td>
                     <td>${product.description}</td>
                     <td><div class="video-container">${product.video}</div></td>
                 `;
                 productList.appendChild(tr);
 
-                // 移动端卡片
+                // 移动端卡片 - 增加颜色图
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 card.innerHTML = `
                     <img src="${product.image}" class="product-image">
+                    <!-- 新增颜色图 -->
+                    <img src="${product.colorsImage}" class="product-image color-image-mobile">
                     <h4>${product.name}</h4>
                     <div class="product-price">${product.price}</div>
                     <p>${product.description}</p>
                     <div class="video-container">${product.video}</div>
-                    <!--button class="btn btn-danger mt-2" onclick="deleteProduct(${product.id})">删除</button-->
                 `;
                 mobileProducts.appendChild(card);
             });
