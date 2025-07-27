@@ -36,6 +36,41 @@
             margin-bottom: 8px;
         }
 
+        .price-highlight {
+            background-color: #fff8e6; /* 暖黄色背景 */
+            color: #e67e22;            /* 橙红色文字 */
+            font-weight: 700;          /* 加粗 */
+            font-size: 1.1em;          /* 增大字号 */
+            border-left: 3px solid #f1c40f !important; /* 左侧金色边框 */
+            border-right: 3px solid #f1c40f !important; /* 右侧金色边框 */
+            position: relative;
+        }
+        .price-highlight::before {
+            content: "¥";              /* 人民币符号 */
+            margin-right: 3px;
+        }
+
+        /* 移动端价格样式 */
+        .mobile-price {
+            background: linear-gradient(135deg, #ffeb3b 0%, #ff9800 100%);
+            color: #c62828;
+            font-weight: 800;
+            font-size: 1.3rem;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 10px 0;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+        }
+
+        /* 桌面端悬停效果 */
+        tr:hover .price-highlight {
+            background-color: #fff2cc; /* 悬停加深 */
+            transform: scale(1.03);
+            transition: all 0.3s;
+            box-shadow: 0 0 10px rgba(230, 126, 34, 0.3);
+        }
+
         /* PC端图片高度控制 */
         @media (min-width: 769px) {
             .table-image {
@@ -361,7 +396,7 @@
                     <td>${product.name}</td>
                     <td><img src="${product.image}" class="product-img"></td>
                     <td><img src="${product.colorsImage}" class="product-img"></td> <!-- 单图展示 -->
-                    <td>${product.price}</td>
+                    <td class="price-highlight">${product.price}</td>
                     <td>${product.description}</td>
                     <td><div class="video-container">${product.video}</div></td>
                 `;
@@ -377,7 +412,7 @@
                     <img src="${product.image}" class="product-image">
                     <img src="${product.colorsImage}" class="product-image">
                     <h4>${product.name}</h4>
-                    <div class="product-price">${product.price}</div>
+                    <div class="mobile-price">${product.price}</div>
                     <p>${product.description}</p>
                 `;
                 mobileProducts.appendChild(card);
